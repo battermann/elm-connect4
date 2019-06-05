@@ -10,9 +10,15 @@
             "elm/core": "1.0.2",
             "elm/html": "1.0.0",
             "elm/random": "1.0.0",
+            "elm/svg": "1.0.1",
+            "elm-community/array-extra": "2.1.0",
+            "elm-community/list-extra": "8.2.0",
+            "elm-community/maybe-extra": "5.0.0",
+            "rundis/elm-bootstrap": "5.1.0",
             "zwilias/elm-rosetree": "1.4.0"
         },
         "indirect": {
+            "avh4/elm-color": "1.0.0",
             "elm/json": "1.1.2",
             "elm/time": "1.0.0",
             "elm/url": "1.0.0",

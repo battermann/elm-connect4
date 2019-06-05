@@ -1,6 +1,6 @@
 {
-  "short_name": "Elm App",
-  "name": "Create Elm App Sample",
+  "short_name": "Connect 4",
+  "name": "Connect 4",
   "icons": [
     {
       "src": "favicon.ico",
