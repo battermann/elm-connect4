@@ -149,7 +149,7 @@ view { game, selectedColumn } =
                 [ maybeMsg |> Maybe.Extra.unwrap (Html.text "") (\msg -> Alert.simplePrimary [ Spacing.mt3 ] [ Html.text msg ])
                 , Html.div [ Spacing.mb3, Spacing.mt3, Flex.block, Flex.row, Flex.justifyCenter, Flex.alignItemsCenter ]
                     (board
-                        |> Array.map Array.toList
+                        |> Array.map (\col -> col |> Array.toList |> List.reverse |> List.append (List.repeat (6 - Array.length col) C4.None))
                         |> Array.toList
                         |> List.indexedMap
                             (\x col ->

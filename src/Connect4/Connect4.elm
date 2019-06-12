@@ -26,14 +26,14 @@ tryMakeMove col gameState =
                 maybeRow =
                     connect4.board
                         |> Array.get col
-                        |> Maybe.map (Array.filter ((/=) None) >> Array.length >> (*) -1 >> (+) 5)
+                        |> Maybe.map Array.length
                         |> Maybe.Extra.filter (\r -> r < 6 && r >= 0)
             in
             case maybeRow of
                 Just row ->
                     let
                         newBoard =
-                            makeMove col row connect4
+                            makeMove col connect4
                     in
                     if (List.length newBoard.moves |> modBy 2) == 1 && checkIfMoveWins P1 col row newBoard.board then
                         P1Won newBoard
@@ -84,7 +84,7 @@ empty : GameState
 empty =
     InProgress
         { moves = []
-        , board = Array.repeat 7 (Array.initialize 6 (always None))
+        , board = Array.repeat 7 Array.empty
         }
 
 
@@ -94,8 +94,8 @@ legalMoves { moves } =
         |> List.filter (\col -> moves |> List.filter ((==) col) |> List.length |> (\l -> l < 6))
 
 
-makeMove : Int -> Int -> Connect4 -> Connect4
-makeMove col row { moves, board } =
+makeMove : Int -> Connect4 -> Connect4
+makeMove col { moves, board } =
     let
         player =
             if (List.length moves |> modBy 2) == 0 then
@@ -105,5 +105,5 @@ makeMove col row { moves, board } =
                 P2
     in
     { moves = moves ++ [ col ]
-    , board = board |> Array.Extra.update col (Array.set row player)
+    , board = board |> Array.Extra.update col (Array.push player)
     }
